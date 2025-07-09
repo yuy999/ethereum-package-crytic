@@ -176,7 +176,7 @@ def new_metrics_job(
     scrape_interval=PROMETHEUS_DEFAULT_SCRAPE_INTERVAL,
 ):
     return {
-        "Name": job_name,
+        "Name": str(job_name),
         "Endpoint": endpoint,
         "MetricsPath": metrics_path,
         "Labels": labels,

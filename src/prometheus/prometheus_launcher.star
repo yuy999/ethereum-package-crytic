@@ -165,6 +165,11 @@ def get_metrics_jobs(
             continue
         metrics_jobs.append(job)
 
+    for i, job in enumerate(metrics_jobs):
+        if job != None and "Name" in job:
+            job["Name"] = str(job["Name"])
+            metrics_jobs[i] = job
+
     return metrics_jobs
 
 

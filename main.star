@@ -383,6 +383,10 @@ def run(plan, args={}):
             fail("Invalid additional service %s" % (additional_service))
     if launch_prometheus_grafana:
         plan.print("Launching prometheus...")
+        for i, job in enumerate(prometheus_additional_metrics_jobs):
+            if job != None and "Name" in job:
+                job["Name"] = str(job["Name"])
+                prometheus_additional_metrics_jobs[i] = job
         prometheus_private_url = prometheus.launch_prometheus(
             plan,
             all_el_client_contexts,
